@@ -32,9 +32,24 @@ const createCells = (cellNumber) => {
 // Recuperiamo l'elemento in pagina e poniamo le variabili che possono servirci
 
 const grid = document.getElementById('grid');
-const userChoise = '';
-let cell = 0;
-let totalCell = 0;
+const confirmButton = document.getElementById('confirm');
+let userChoise = '';
+let totalCell = '';
 
 // Creiamo le celle in base alla scelta dell'utente
 
+confirmButton.addEventListener('click', function () {
+    const inputChoise = choise.value;
+    console.log(inputChoise);
+
+    if (inputChoise === 'easy') {
+        let totalCell = 100;
+        createCells(totalCell);
+    } else if (inputChoise === 'medium') {
+        let totalCell = 81;
+        createCells(totalCell);
+    } else {
+        let totalCell = 49;
+        createCells(totalCell);
+    }
+})
