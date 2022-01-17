@@ -26,10 +26,10 @@ const createCells = (cellNumber) => {
     const cell = document.createElement('div'); // Crea un elemento div
     cell.id = 'cell';
     cell.className = 'cell'; // Assegna la classe cell a quell'elemento.
-    /*
-    cell.style.width = 'calc(100% / variabile)';
-    cell.style.height = 'calc(100% / variabile)';
-    */
+
+    cell.style.width = `calc(100% / ${cellDimension})`;
+    cell.style.height = `calc(100% / ${cellDimension})`;
+
     cell.innerText = cellNumber + 1; // Scrivi il numero dentro la cella.
     return cell; // Come risultato ho il mio div con la classe cell assegnata
 }
@@ -39,7 +39,7 @@ const createCells = (cellNumber) => {
 const grid = document.getElementById('grid');
 const choise = document.getElementById('choise');
 const confirmButton = document.getElementById('confirm');
-
+let cellDimension;
 // Creiamo le celle in base alla scelta dell'utente
 
 confirmButton.addEventListener('click', function () {
@@ -48,10 +48,13 @@ confirmButton.addEventListener('click', function () {
     let totalCell;
     if (inputChoise === 'easy') {
         totalCell = 100;
+        cellDimension = 10;
     } else if (inputChoise === 'medium') {
         totalCell = 81;
+        cellDimension = 9;
     } else {
         totalCell = 49;
+        cellDimension = 7;
     }
     console.log(totalCell);
 
@@ -61,9 +64,5 @@ confirmButton.addEventListener('click', function () {
             cell.classList.toggle('clicked');
         });
         grid.appendChild(cell);
-    }
-
-    if (totalCell === 100) {
-
     }
 });
