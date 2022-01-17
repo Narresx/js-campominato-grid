@@ -30,7 +30,7 @@ const createCells = (cellNumber) => {
     cell.style.width = 'calc(100% / variabile)';
     cell.style.height = 'calc(100% / variabile)';
     */
-    cell.innerText = cellNumber; // Scrivi il numero dentro la cella.
+    cell.innerText = cellNumber + 1; // Scrivi il numero dentro la cella.
     return cell; // Come risultato ho il mio div con la classe cell assegnata
 }
 
@@ -56,15 +56,14 @@ confirmButton.addEventListener('click', function () {
     console.log(totalCell);
 
     for (i = 0; i < totalCell; i++) {
-
         let cell = createCells(i);
-
-
         cell.addEventListener('click', function () {
             cell.classList.toggle('clicked');
         });
-
-
         grid.appendChild(cell);
+    }
+
+    if (totalCell === 100) {
+
     }
 });
