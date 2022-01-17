@@ -24,7 +24,12 @@ const getUniqueRandomNumber = (min, max, list) => {
 
 const createCells = (cellNumber) => {
     const cell = document.createElement('div'); // Crea un elemento div
+    cell.id = 'cell';
     cell.className = 'cell'; // Assegna la classe cell a quell'elemento.
+    /*
+    cell.style.width = 'calc(100% / variabile)';
+    cell.style.height = 'calc(100% / variabile)';
+    */
     cell.innerText = cellNumber; // Scrivi il numero dentro la cella.
     return cell; // Come risultato ho il mio div con la classe cell assegnata
 }
@@ -32,24 +37,34 @@ const createCells = (cellNumber) => {
 // Recuperiamo l'elemento in pagina e poniamo le variabili che possono servirci
 
 const grid = document.getElementById('grid');
+const choise = document.getElementById('choise');
 const confirmButton = document.getElementById('confirm');
-let userChoise = '';
-let totalCell = '';
 
 // Creiamo le celle in base alla scelta dell'utente
 
 confirmButton.addEventListener('click', function () {
     const inputChoise = choise.value;
     console.log(inputChoise);
-
+    let totalCell;
     if (inputChoise === 'easy') {
-        let totalCell = 100;
-        createCells(totalCell);
+        totalCell = 100;
     } else if (inputChoise === 'medium') {
-        let totalCell = 81;
-        createCells(totalCell);
+        totalCell = 81;
     } else {
-        let totalCell = 49;
-        createCells(totalCell);
+        totalCell = 49;
     }
-})
+    console.log(totalCell);
+
+    for (i = 0; i < totalCell; i++) {
+
+        let cell = createCells(i);
+
+
+        cell.addEventListener('click', function () {
+            cell.classList.toggle('clicked');
+        });
+
+
+        grid.appendChild(cell);
+    }
+});
