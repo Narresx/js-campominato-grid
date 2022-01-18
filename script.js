@@ -44,6 +44,7 @@ let cellDimension;
 
 confirmButton.addEventListener('click', function () {
     const inputChoise = choise.value;
+    grid.innerHTML = '';
     console.log(inputChoise);
     let totalCell;
     if (inputChoise === 'easy') {
